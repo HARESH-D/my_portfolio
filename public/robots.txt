@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hareshd.dev/sitemap.xml
