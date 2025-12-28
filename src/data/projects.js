@@ -112,13 +112,4 @@ export const projects = [
   }
 ];
 
-export const projectCategories = [
-  "All",
-  "AI / Full Stack",
-  "AI / Machine Learning",
-  "AI / NLP",
-  "Full Stack / NLP",
-  "Full Stack / FinTech"
-];
-
 export default projects;

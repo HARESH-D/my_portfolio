@@ -174,13 +174,13 @@ export default function Hero() {
             {[
               { icon: Github, href: personalInfo.social.github, label: 'GitHub' },
               { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn' },
-              { icon: Mail, href: personalInfo.social.email, label: 'Email' },
+              { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Email' },
             ].map((social) => (
               <motion.a
                 key={social.label}
                 href={social.href}
-                target={social.href.startsWith('mailto') ? undefined : '_blank'}
-                rel="noopener noreferrer"
+                target={social.href.startsWith('mailto') ? '_self' : '_blank'}
+                rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
                 className="p-3 rounded-xl bg-white dark:bg-dark-800 
                          border border-dark-200 dark:border-dark-700
                          text-dark-600 dark:text-dark-400
@@ -196,24 +196,31 @@ export default function Hero() {
               </motion.a>
             ))}
           </motion.div>
-        </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <motion.button
-            onClick={scrollToAbout}
-            className="flex flex-col items-center gap-2 text-dark-400 dark:text-dark-500 
-                     hover:text-primary-500 transition-colors"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+          {/* Scroll indicator */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-16 flex justify-center"
           >
-            <span className="text-sm font-medium">Scroll to explore</span>
-            <ArrowDown size={20} className="animate-bounce" />
-          </motion.button>
+            <motion.button
+              onClick={scrollToAbout}
+              className="flex flex-col items-center gap-2 text-dark-400 dark:text-dark-500 
+                       hover:text-primary-500 transition-colors"
+              animate={{
+                y: [-10, 10, -10],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-sm font-medium">Scroll to explore</span>
+              <ArrowDown size={24} className="animate-bounce" />
+            </motion.button>
+          </motion.div>
         </motion.div>
       </div>
 

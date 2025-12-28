@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, Award, Sparkles } from 'lucide-react';
-import { projects, projectCategories } from '../../data';
+import { projects } from '../../data';
 import { SectionHeader, Badge, Button } from '../ui';
 
 /**
@@ -11,18 +10,13 @@ import { SectionHeader, Badge, Button } from '../ui';
  */
 
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const filteredProjects = activeCategory === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
-
-  const featuredProjects = filteredProjects.filter(p => p.featured);
-  const otherProjects = filteredProjects.filter(p => !p.featured);
+  const featuredProjects = projects.filter(p => p.featured);
+  const otherProjects = projects.filter(p => !p.featured);
 
   return (
     <section id="projects" className="section-padding bg-white dark:bg-dark-950">
@@ -33,41 +27,14 @@ export default function Projects() {
           description="A selection of projects that showcase my skills in full-stack development and AI engineering"
         />
 
-        {/* Category Filter */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          {['All', ...new Set(projects.map(p => p.category))].map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all
-                ${activeCategory === category
-                  ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
-                  : 'bg-dark-100 dark:bg-dark-800 text-dark-600 dark:text-dark-400 hover:bg-dark-200 dark:hover:bg-dark-700'
-                }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </motion.div>
-
         <motion.div ref={ref}>
           {/* Featured Projects */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-8"
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-8"
+          >
               {featuredProjects.length > 0 && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {featuredProjects.map((project, index) => (
@@ -100,7 +67,6 @@ export default function Projects() {
                 </>
               )}
             </motion.div>
-          </AnimatePresence>
         </motion.div>
       </div>
     </section>
@@ -172,9 +138,6 @@ function FeaturedProjectCard({ project, index, inView }) {
       <div className="p-6">
         <div className="flex items-start justify-between gap-4 mb-3">
           <div>
-            <Badge variant="secondary" size="sm" className="mb-2">
-              {project.category}
-            </Badge>
             <h3 className="text-xl font-bold text-dark-900 dark:text-white">
               {project.title}
             </h3>
@@ -184,7 +147,7 @@ function FeaturedProjectCard({ project, index, inView }) {
           </div>
         </div>
 
-        <p className="text-dark-600 dark:text-dark-400 mb-4 line-clamp-3">
+        <p className="text-dark-600 dark:text-dark-400 mb-4">
           {project.longDescription || project.description}
         </p>
 

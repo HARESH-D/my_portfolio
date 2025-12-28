@@ -11,7 +11,7 @@ export const skillCategories = [
     skills: [
       { name: "Python", level: 95 },
       { name: "JavaScript", level: 85 },
-      { name: "TypeScript", level: 75 },
+      { name: "TypeScript", level: 40 },
       { name: "SQL", level: 90 },
       { name: "Java", level: 70 },
       { name: "HTML/CSS", level: 85 },
@@ -23,7 +23,7 @@ export const skillCategories = [
     icon: "Layout",
     skills: [
       { name: "React", level: 85 },
-      { name: "Next.js", level: 70 },
+      { name: "Next.js", level: 35 },
       { name: "TailwindCSS", level: 90 },
       { name: "Framer Motion", level: 75 },
       { name: "HTML5/CSS3", level: 90 },
@@ -36,7 +36,7 @@ export const skillCategories = [
     icon: "Server",
     skills: [
       { name: "FastAPI", level: 95 },
-      { name: "Flask", level: 80 },
+      { name: "Django", level: 75 },
       { name: "REST APIs", level: 95 },
       { name: "SQLAlchemy", level: 85 },
       { name: "PostgreSQL", level: 80 },
@@ -86,8 +86,8 @@ export const skillCategories = [
 
 // Flat list of all technologies for quick display
 export const technologies = [
-  "Python", "JavaScript", "TypeScript", "SQL", "Java",
-  "React", "Next.js", "TailwindCSS", "FastAPI", "Flask",
+  "Python", "JavaScript", "SQL", "Java",
+  "React", "TailwindCSS", "FastAPI", "Django",
   "LangChain", "GPT-4", "Hugging Face", "Transformers",
   "Docker", "Git", "REST APIs", "PostgreSQL",
   "Pandas", "NumPy", "Scikit-learn", "spaCy", "NLTK"

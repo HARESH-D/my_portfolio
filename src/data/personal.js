@@ -13,7 +13,7 @@ export const personalInfo = {
   
   // Social links
   social: {
-    linkedin: "www.linkedin.com/in/haresh-d-5b995320a",
+    linkedin: "https://www.linkedin.com/in/haresh-d-5b995320a/",
     github:"https://github.com/HARESH-D",
     email: "mailto:hareshdinakar@gmail.com",
   },
@@ -32,7 +32,7 @@ export const personalInfo = {
     paragraphs: [
       "I'm a passionate software engineer who thrives at the intersection of full-stack development and artificial intelligence. Currently working at Blue Yonder, I build automation tools and microservices that power enterprise-scale supply chain operations.",
       "My journey spans from crafting responsive React frontends to designing FastAPI backends, from implementing LangChain-powered AI agents to deploying Dockerized microservices. I believe in writing clean, maintainable code that scales.",
-      "When I'm not coding, you'll find me exploring new technologies, contributing to hackathons (won 1st place at Crystal Ball 2025!), or enjoying long bike drives and cooking experiments."
+      "When I'm not coding, you'll find me doing calisthenics, going for runs, enjoying long bike rides, or experimenting with new recipes in the kitchen."
     ],
     highlights: [
       { label: "Years Experience", value: "1.5+" },
