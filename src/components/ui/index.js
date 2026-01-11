@@ -7,3 +7,4 @@ export { default as Card, CardHeader, CardTitle, CardDescription, CardContent, C
 export { default as Badge } from './Badge';
 export { default as SectionHeader } from './SectionHeader';
 export { default as ThemeToggle } from './ThemeToggle';
+export { default as VideoModal } from './VideoModal';
