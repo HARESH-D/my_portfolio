@@ -1,6 +1,5 @@
 /**
  * Achievements & Awards Data
- * Auto-generated from resume - Haresh D
  */
 
 export const achievements = [

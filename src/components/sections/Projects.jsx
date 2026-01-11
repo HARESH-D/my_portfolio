@@ -1,15 +1,17 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github, Award, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Award, Sparkles, Play } from 'lucide-react';
 import { projects } from '../../data';
-import { SectionHeader, Badge, Button } from '../ui';
+import { SectionHeader, Badge, Button, VideoModal } from '../ui';
 
 /**
  * Projects Section
- * Showcases featured and other projects with filtering
+ * Portfolio projects showcase
  */
 
 export default function Projects() {
+  const [videoModal, setVideoModal] = useState({ isOpen: false, videoUrl: null, title: '' });
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -17,6 +19,14 @@ export default function Projects() {
 
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = projects.filter(p => !p.featured);
+
+  const openVideoModal = (videoUrl, title) => {
+    setVideoModal({ isOpen: true, videoUrl, title });
+  };
+
+  const closeVideoModal = () => {
+    setVideoModal({ isOpen: false, videoUrl: null, title: '' });
+  };
 
   return (
     <section id="projects" className="section-padding bg-white dark:bg-dark-950">
@@ -43,6 +53,7 @@ export default function Projects() {
                       project={project}
                       index={index}
                       inView={inView}
+                      onVideoClick={openVideoModal}
                     />
                   ))}
                 </div>
@@ -61,6 +72,7 @@ export default function Projects() {
                         project={project}
                         index={index}
                         inView={inView}
+                        onVideoClick={openVideoModal}
                       />
                     ))}
                   </div>
@@ -69,11 +81,19 @@ export default function Projects() {
             </motion.div>
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={videoModal.isOpen}
+        onClose={closeVideoModal}
+        videoUrl={videoModal.videoUrl}
+        title={videoModal.title}
+      />
     </section>
   );
 }
 
-function FeaturedProjectCard({ project, index, inView }) {
+function FeaturedProjectCard({ project, index, inView, onVideoClick }) {
   return (
     <motion.div
       className="group relative bg-white dark:bg-dark-800 rounded-2xl overflow-hidden
@@ -105,6 +125,17 @@ function FeaturedProjectCard({ project, index, inView }) {
         {/* Links overlay */}
         <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 
                       transition-opacity duration-300 flex items-center justify-center gap-4">
+          {project.video && (
+            <motion.button
+              onClick={() => onVideoClick(project.video, project.title)}
+              className="p-3 rounded-full bg-white text-dark-900 hover:bg-primary-500 hover:text-white
+                       transition-colors duration-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Play size={20} fill="currentColor" />
+            </motion.button>
+          )}
           {project.github && (
             <motion.a
               href={project.github}
@@ -169,7 +200,7 @@ function FeaturedProjectCard({ project, index, inView }) {
   );
 }
 
-function ProjectCard({ project, index, inView }) {
+function ProjectCard({ project, index, inView, onVideoClick }) {
   return (
     <motion.div
       className="group bg-white dark:bg-dark-800 rounded-xl p-6
@@ -189,6 +220,15 @@ function ProjectCard({ project, index, inView }) {
           <Sparkles className="w-6 h-6 text-white" />
         </div>
         <div className="flex gap-2">
+          {project.video && (
+            <button
+              onClick={() => onVideoClick(project.video, project.title)}
+              className="p-2 rounded-lg text-dark-400 hover:text-primary-500 
+                       hover:bg-dark-100 dark:hover:bg-dark-700 transition-colors"
+            >
+              <Play size={18} fill="currentColor" />
+            </button>
+          )}
           {project.github && (
             <a
               href={project.github}

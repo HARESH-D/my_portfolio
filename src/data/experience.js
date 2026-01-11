@@ -1,6 +1,5 @@
 /**
  * Experience Data
- * Auto-generated from resume - Haresh D
  */
 
 export const experiences = [

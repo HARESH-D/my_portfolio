@@ -1,6 +1,5 @@
 /**
  * Projects Data
- * Auto-generated from resume - Haresh D
  */
 
 export const projects = [
@@ -21,8 +20,9 @@ export const projects = [
     ],
     technologies: ["LangChain", "GPT-4", "FastAPI", "Docker", "OpenAI APIs", "RAG", "Python", "3D Visualization"],
     image: "/projects/agentneo.png",
-    github: "https://github.com/hareshd",
+    github: null,
     demo: null,
+    video: null, 
     color: "from-blue-600 to-purple-600"
   },
   {
@@ -42,8 +42,9 @@ export const projects = [
     ],
     technologies: ["Reinforcement Learning", "Python", "FastAPI", "React", "SQLite", "Bing Maps API"],
     image: "/projects/routexpert.png",
-    github: "https://github.com/hareshd",
+    github: "https://github.com/HARESH-D/RouteXpert",
     demo: null,
+    video: "https://www.youtube.com/watch?v=4mivkO26cng", 
     color: "from-green-500 to-teal-500"
   },
   {
@@ -64,8 +65,8 @@ export const projects = [
     ],
     technologies: ["Python", "Transformers", "Hugging Face", "LDA", "TF-IDF", "FastAPI", "Pandas", "NLP"],
     image: "/projects/sparrow.png",
-    github: "https://github.com/hareshd",
-    demo: "https://sparrow-demo.com",
+    demo: "https://survey-frontend-pi.vercel.app/",
+    video: null,
     color: "from-orange-500 to-red-500"
   },
   {
@@ -73,7 +74,7 @@ export const projects = [
     title: "Review Fusion",
     subtitle: "Walmart Hackathon Project",
     category: "Full Stack / NLP",
-    featured: false,
+    featured: true,
     award: null,
     description: "An end-to-end review summarization engine to process 10k+ Walmart reviews using TextRank, Sentiment Analysis, and Topic Modeling.",
     longDescription: "Created a comprehensive review analytics platform for processing large-scale customer feedback. The system uses advanced NLP pipelines with spaCy and NLTK for tokenization, POS tagging, and sentiment polarity scoring. Features real-time visualization with Flask + Plotly dashboard, achieving 18% improvement in ROUGE-L scores.",
@@ -84,9 +85,8 @@ export const projects = [
       "Built real-time visualization dashboard with Flask + Plotly"
     ],
     technologies: ["Python", "NLTK", "spaCy", "TextRank", "Flask", "Plotly", "Scikit-learn"],
-    image: "/projects/reviewfusion.png",
-    github: "https://github.com/hareshd",
-    demo: "https://review-fusion-demo.com",
+    image: "/projects/reviewfusion.png",    
+    video: "https://www.youtube.com/watch?v=gIMwNnW2o_I",
     color: "from-yellow-500 to-orange-500"
   },
   {
